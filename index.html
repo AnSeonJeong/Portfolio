@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <script src="js/main.js" defer></script>
     <title>SeonJeong's Portfolio</title>
   </head>
@@ -24,8 +25,8 @@
     </header>
     <!-- header -->
     <main id="contents">
-      <canvas></canvas>
       <section id="home">
+        <canvas></canvas>
         <div id="moon">
           <div class="scroll">
             <img src="images/scrollDown.png" alt="scrollDown" />
@@ -36,13 +37,13 @@
           <span class="main_title">Welcome to</span>
           <span class="main_title">my Portfolio</span>
         </h1>
-        <div id="ocean">
-          <div class="wave"></div>
-          <div class="wave"></div>
-        </div>
       </section>
+      <div id="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
       <!-- home -->
-      <section id="about">
+      <section id="about" class="top">
         <div class="center">
           <img src="images/aboutMe.png" alt="photo" />
           <div id="my_info">
@@ -92,7 +93,7 @@
         </div>
       </section>
       <!-- about -->
-      <section id="project">
+      <section id="project" class="top">
         <div class="project_text">
           <h2>
             From now on, <br />
@@ -175,7 +176,7 @@
                     </li>
                     <li>
                       <span>Info</span>
-                      <span>
+                      <span class="spider-man-info">
                         스파이더맨 시리즈 중 하나인 ‘Spider-Man No Way Home
                         ’의<br />
                         시놉시스, 등장인물, 트레일러 등 영화에 대한 정보를
@@ -260,7 +261,7 @@
         </div>
       </section>
       <!-- project -->
-      <section id="contact">
+      <section id="contact" class="top">
         <div class="contact_box">
           <div class="card">
             <div id="front">
@@ -290,7 +291,7 @@
       </section>
       <!-- contact -->
     </main>
-    <footer id="footer">
+    <footer id="footer" class="top">
       <div id="copy">Copyright © 2022 SeonJeong All rights reserved</div>
     </footer>
   </body>
