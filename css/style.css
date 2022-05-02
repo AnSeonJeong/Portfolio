@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=PT+Serif:ital@1&family=Roboto&family=Source+Sans+Pro:wght@600;700&display=swap");
+
 :root {
   /* font */
   --font-size: 18px;
@@ -20,16 +22,21 @@ html {
   font-family: "Noto Sans KR", sans-serif;
   background-color: var(--bg-color);
   color: #2c2c2c;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
+  scroll-behavior: smooth;
 }
 
 button {
   border: none;
   background: none;
+}
+
+a {
+  color: var(--bg-color);
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
 }
 
 #header {
@@ -39,27 +46,62 @@ button {
   width: 100%;
   height: 100px;
   background-color: transparent;
-}
-
-#logo {
-  float: left;
-}
-
-#nav {
-  float: right;
-}
-
-#menu {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.progress {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 1800;
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+}
+
+.progress span {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  text-align: center;
+  line-height: 50px;
+  color: var(--gradient-color3);
+  font-size: 14px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  cursor: pointer;
+  position: fixed;
+  bottom: 65px;
+  right: 65px;
 }
 
 #menu li {
-  padding: 0 3.785vw;
-  line-height: 100px;
+  height: 50px;
+  display: inline-block;
+  margin: 25px 3.785vw;
   font-size: 1.125rem;
   font-weight: var(--font-medium);
   color: var(--bg-color);
+  cursor: pointer;
+}
+
+#menu li a {
+  line-height: 50px;
+}
+
+#menu li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  background-color: var(--bg-color);
+  height: 2px;
+  transition: width 0.5s;
+}
+
+#menu li:hover a::after {
+  width: 100%;
 }
 
 #contents {
@@ -125,9 +167,9 @@ canvas {
   font-size: 9.375em;
   font-weight: var(--font-bold);
   display: block;
-  /* color: transparent; */
+  color: transparent;
   padding: 25px 0;
-  /* -webkit-text-stroke: 2px var(--bg-color); */
+  -webkit-text-stroke: 2px var(--bg-color);
 }
 
 #home_title .main_title:nth-child(1) {
@@ -139,10 +181,10 @@ canvas {
 
 #ocean {
   width: 100%;
-  height: 100%;
+  height: 90%;
   overflow: hidden;
   position: absolute;
-  bottom: -80px;
+  bottom: 0px;
   left: 0;
 }
 
@@ -187,7 +229,7 @@ canvas {
 
 /* about */
 #about {
-  padding: 450px 0;
+  padding: 250px 0;
   width: 100vw;
   background-color: var(--bg-color);
   display: flex;
@@ -196,7 +238,13 @@ canvas {
   z-index: 500;
 }
 
-#about img {
+#about_wrap {
+  padding: 200px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#about_wrap img {
   margin-right: 6vw;
 }
 
@@ -302,7 +350,7 @@ canvas {
 }
 
 .show {
-  animation: show 5s forwards;
+  animation: show 5s linear;
 }
 
 @keyframes show {
@@ -400,10 +448,19 @@ canvas {
 .project_content .img_wrap {
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  cursor: n-resize;
 }
 
 .project_content .img_wrap img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: 10s;
+}
+
+.project_content .img_wrap:hover img {
+  object-position: bottom;
 }
 
 .project_content .project_info {

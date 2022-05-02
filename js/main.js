@@ -10,6 +10,8 @@ const ocean = document.querySelectorAll("#ocean");
 const topSection = document.querySelectorAll(".top");
 const projectBox = document.querySelector("#project_box_wrap");
 const home = document.getElementById("home");
+const projectText = document.querySelector(".project_text");
+const progressCircle = document.querySelector(".progress");
 
 /*
 window.addEventListener("scroll", () => {
@@ -27,13 +29,36 @@ window.addEventListener("scroll", () => {
   });
 });
 */
-console.log(ocean);
-window.addEventListener("scroll", () => {
-  const currentScroll = document.body.scrollTop
-    ? document.body.scrollTop
-    : document.documentElement.scrollTop;
 
-  home.style.marginTop = -currentScroll / 2 + "px";
+window.addEventListener("scroll", () => {
+  // fade in
+  let currentScroll = document.body.scrollTop
+    ? document.body.scrlollTop
+    : document.documentElement.scrollTop;
+  let offsetTop = projectText.offsetTop + "150px";
+
+  // if (currentScroll > offsetTop) {
+  //   projectText.querySelector("h2").classList.add("show");
+  // }
+
+  // progress
+  let calcHeight =
+    document.body.scrollHeight - document.documentElement.clientHeight;
+  let scrollValue = (currentScroll / calcHeight) * 100;
+
+  progressCircle.style.background = `conic-gradient(var(--gradient-color2)${scrollValue}%, #b2b9ba ${scrollValue}%)`;
+
+  if (currentScroll === 0) {
+    progressCircle.classList.add("hidden");
+  } else {
+    progressCircle.classList.remove("hidden");
+  }
+
+  progressCircle.addEventListener("click", () => {
+    document.documentElement.scrollTo(0, 0);
+  });
+
+  // home.style.marginTop = -currentScroll / 2 + "px";
 });
 
 // projectBox.addEventListener("scroll", (e) => {
@@ -57,3 +82,29 @@ function createBox() {
 }
 
 createBox();
+
+// projectBtn
+const projectBtn = document.querySelectorAll(
+  ".project_content .btn_wrap button"
+);
+console.log(projectBtn);
+
+const krispyImg = [
+  "krispyKreme_main.jpg",
+  "krispyKreme_menu.jpg",
+  "krispyKreme_brand.jpg",
+];
+
+function changeImg(other) {
+  document.querySelector(".krispy img").src = `images/` + other;
+}
+
+projectBtn[0].addEventListener("click", () => {
+  changeImg(krispyImg[0]);
+});
+projectBtn[1].addEventListener("click", () => {
+  changeImg(krispyImg[1]);
+});
+projectBtn[2].addEventListener("click", () => {
+  changeImg(krispyImg[2]);
+});
