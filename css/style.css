@@ -77,7 +77,7 @@ a {
   right: 65px;
 }
 
-#menu li {
+#header .menu li {
   height: 50px;
   display: inline-block;
   margin: 25px 3.785vw;
@@ -87,11 +87,11 @@ a {
   cursor: pointer;
 }
 
-#menu li a {
+#header .menu li a {
   line-height: 50px;
 }
 
-#menu li a::after {
+#header .menu li a::after {
   content: "";
   display: block;
   width: 0;
@@ -100,8 +100,22 @@ a {
   transition: width 0.5s;
 }
 
-#menu li:hover a::after {
+#header .menu li:hover a::after {
   width: 100%;
+}
+
+.mobile_menu .menu {
+  width: 100%;
+  height: 50%;
+  background-color: var(--gradient-color2);
+  text-align: center;
+  padding: 100px 0;
+  position: absolute;
+  top: 0;
+  line-height: 3;
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: 0.5s;
 }
 
 #contents {
@@ -191,7 +205,7 @@ canvas {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-15%);
+    transform: translateX(-10%);
   }
 }
 
@@ -200,7 +214,7 @@ canvas {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(15%);
+    transform: translateX(10%);
   }
 }
 

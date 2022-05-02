@@ -140,7 +140,7 @@
     width: 240px;
   }
 
-  #menu li {
+  #header .menu li {
     font-size: 1rem;
   }
 
@@ -209,8 +209,19 @@
 
 @media screen and (max-width: 768px) {
   #moon {
-    width: 550px;
-    height: 550px;
+    width: 500px;
+    height: 500px;
+  }
+
+  #moon .scroll {
+    transform: scale(0.9);
+  }
+
+  #moon .scroll img:nth-child(1) {
+    right: 0;
+  }
+  #moon .scroll img:nth-child(2) {
+    right: 47px;
   }
 
   #home_title .main_title {
@@ -224,6 +235,10 @@
 
   #my_info .wrap {
     margin-left: 30px;
+  }
+
+  .about_content br {
+    display: none;
   }
 
   .skills ul {
@@ -271,6 +286,10 @@
     text-align: center;
   }
 
+  .project_info {
+    margin-left: 0;
+  }
+
   .project_info .btn_wrap {
     text-align: center;
     margin-top: 20px;
@@ -307,5 +326,190 @@
   #name {
     font-size: 18px;
     padding-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  #logo img {
+    transform: scale(0.85);
+  }
+
+  .mobile_menu .ham {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1500;
+  }
+
+  .mobile_menu .ham li {
+    width: 100%;
+    height: 3px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+  }
+
+  .mobile_menu .ham li:nth-child(1) {
+    transform: rotate(0);
+    transition: 0.4s;
+  }
+  .mobile_menu .ham li:nth-child(2) {
+    transform: scaleY(100%);
+    transition: 0.2s;
+  }
+  .mobile_menu .ham li:nth-child(3) {
+    transform: rotate(0);
+    transition: 0.4s;
+  }
+
+  .mobile_menu .ham.active li:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: top left;
+  }
+  .mobile_menu .ham.active li:nth-child(2) {
+    transform: scaleY(0);
+  }
+  .mobile_menu .ham.active li:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+  }
+
+  .mobile_menu .menu.active {
+    transform: translateY(0);
+  }
+
+  .mobile_menu .menu li {
+    font-size: 24px;
+    font-weight: var(--font-bold);
+    padding: 25px 0;
+  }
+
+  #moon {
+    width: 350px;
+    height: 350px;
+  }
+
+  #moon .scroll {
+    transform: scale(0.7);
+  }
+
+  #moon .scroll img:nth-child(1) {
+    top: 15px;
+    right: -67px;
+  }
+  #moon .scroll img:nth-child(2) {
+    top: 51px;
+    right: -20px;
+  }
+
+  #home_title .main_title {
+    font-size: 3em;
+    -webkit-text-stroke: 1px var(--bg-color);
+    padding: 10px 0;
+  }
+
+  #about img {
+    transform: scale(0.7);
+    margin: 0 50px;
+  }
+
+  #my_info {
+    display: block;
+    width: 360px;
+    margin: 0;
+  }
+
+  #my_info .wrap {
+    margin-left: 10px;
+  }
+
+  .skills {
+    margin-top: 0;
+  }
+
+  .skills ul {
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(2, 120px);
+  }
+
+  .project_title {
+    font-size: 50px;
+  }
+
+  .project_content {
+    grid-template-rows: 0.2fr 0.7fr 1fr;
+  }
+
+  .project_content > .btn_wrap {
+    margin: 0;
+  }
+
+  .project_content > .btn_wrap > button {
+    width: 90px;
+    margin: 0 15px;
+  }
+
+  .project_content .img_wrap {
+    width: 350px;
+    height: 197px;
+    margin-bottom: 0;
+  }
+
+  .project_content .project_info {
+    width: 350px;
+  }
+
+  .project_content .project_info .btn_wrap button {
+    width: 124px;
+    padding: 13px 25px;
+    margin-right: 21px;
+    font-size: 15px;
+  }
+
+  .krispy .btn_wrap {
+    margin-bottom: 78px;
+  }
+
+  .krispy .img_wrap {
+    margin-bottom: 90px;
+  }
+
+  .project_desc li:nth-child(2) span:nth-child(2) {
+    width: 250px;
+  }
+
+  .project_desc li:nth-child(2) span:nth-child(2) br {
+    display: none;
+  }
+
+  .contact_box {
+    width: 350px;
+    height: 220px;
+  }
+
+  #contact_content {
+    padding-left: 20px;
+  }
+
+  #name {
+    font-size: 16px;
+    padding-bottom: 12px;
+  }
+
+  #address {
+    font-size: 14px;
+  }
+
+  #back {
+    line-height: 220px;
   }
 }

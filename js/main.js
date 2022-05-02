@@ -5,6 +5,42 @@ flipedCard.addEventListener("click", () => {
   flipedCard.classList.toggle("fliped");
 });
 
+// resize
+const menu = document.querySelector("#header .menu");
+const HIDDEN = "hidden";
+
+function hideMenu() {
+  if (document.body.getBoundingClientRect().width < 600) {
+    menu.classList.add(HIDDEN);
+  } else {
+    menu.classList.remove(HIDDEN);
+  }
+}
+
+hideMenu();
+
+window.addEventListener("resize", () => {
+  hideMenu();
+});
+
+const ham = document.querySelector(".ham");
+const hamMenu = document.querySelector(".mobile_menu .menu");
+
+const ACTIVE = "active";
+let active = false;
+
+ham.addEventListener("click", () => {
+  if (!active) {
+    ham.classList.add(ACTIVE);
+    hamMenu.classList.add(ACTIVE);
+    active = true;
+  } else {
+    ham.classList.remove(ACTIVE);
+    hamMenu.classList.remove(ACTIVE);
+    active = false;
+  }
+});
+
 // scroll
 const ocean = document.querySelectorAll("#ocean");
 const topSection = document.querySelectorAll(".top");
@@ -46,18 +82,17 @@ window.addEventListener("scroll", () => {
     document.body.scrollHeight - document.documentElement.clientHeight;
   let scrollValue = (currentScroll / calcHeight) * 100;
 
-  progressCircle.style.background = `conic-gradient(var(--gradient-color2)${scrollValue}%, #b2b9ba ${scrollValue}%)`;
+  progressCircle.style.background = `conic-gradient(var(--gradient-color2)${scrollValue}%, #d3dadb ${scrollValue}%)`;
 
   if (currentScroll === 0) {
-    progressCircle.classList.add("hidden");
+    progressCircle.classList.add(HIDDEN);
   } else {
-    progressCircle.classList.remove("hidden");
+    progressCircle.classList.remove(HIDDEN);
   }
 
   progressCircle.addEventListener("click", () => {
     document.documentElement.scrollTo(0, 0);
   });
-
   // home.style.marginTop = -currentScroll / 2 + "px";
 });
 
