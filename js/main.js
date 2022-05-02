@@ -42,12 +42,14 @@ ham.addEventListener("click", () => {
 });
 
 // scroll
-const ocean = document.querySelectorAll("#ocean");
-const topSection = document.querySelectorAll(".top");
 const projectBox = document.querySelector("#project_box_wrap");
-const home = document.getElementById("home");
-const projectText = document.querySelector(".project_text");
+const project = document.getElementById("project");
 const progressCircle = document.querySelector(".progress");
+const moon = document.getElementById("moon");
+const homeTitle = document.getElementById("home_title");
+const mainTitle = homeTitle.querySelectorAll(".main_title");
+const circle = document.getElementById("circle");
+const projectWrap = document.querySelector("#project_wrap");
 
 /*
 window.addEventListener("scroll", () => {
@@ -67,20 +69,14 @@ window.addEventListener("scroll", () => {
 */
 
 window.addEventListener("scroll", () => {
-  // fade in
-  let currentScroll = document.body.scrollTop
+  // progress
+  const currentScroll = document.body.scrollTop
     ? document.body.scrlollTop
     : document.documentElement.scrollTop;
-  let offsetTop = projectText.offsetTop + "150px";
 
-  // if (currentScroll > offsetTop) {
-  //   projectText.querySelector("h2").classList.add("show");
-  // }
-
-  // progress
-  let calcHeight =
+  const calcHeight =
     document.body.scrollHeight - document.documentElement.clientHeight;
-  let scrollValue = (currentScroll / calcHeight) * 100;
+  const scrollValue = (currentScroll / calcHeight) * 100;
 
   progressCircle.style.background = `conic-gradient(var(--gradient-color2)${scrollValue}%, #d3dadb ${scrollValue}%)`;
 
@@ -93,15 +89,39 @@ window.addEventListener("scroll", () => {
   progressCircle.addEventListener("click", () => {
     document.documentElement.scrollTo(0, 0);
   });
-  // home.style.marginTop = -currentScroll / 2 + "px";
+
+  // home scroll event
+  moon.style.marginTop = currentScroll / 2 + "px";
+  homeTitle.style.marginTop = currentScroll / 2 + "px";
+  mainTitle[0].style.transform = `translateX(${currentScroll / 10 + "px"})`;
+  mainTitle[1].style.transform = `translateX(${-currentScroll / 10 + "px"})`;
+
+  // project scroll event
+  const textPos = project.offsetTop;
+  const text = project.querySelector("h2");
+
+  const SHOW = "show";
+  const SIZEUP = "sizeUp";
+
+  if (currentScroll > textPos - 200) {
+    text.classList.add(SHOW);
+  } else {
+    text.classList.remove(SHOW);
+  }
+
+  if (currentScroll > textPos + 500) {
+    circle.classList.add(SIZEUP);
+    projectBox.classList.add(SHOW);
+  } else {
+    circle.classList.remove(SIZEUP);
+    projectBox.classList.remove(SHOW);
+  }
 });
 
 // projectBox.addEventListener("scroll", (e) => {
 //   e.preventDefault();
 //   projectBox.scrollLeft += e.deltaY;
 // });
-
-const projectWrap = document.querySelector("#project_wrap");
 
 function createBox() {
   const greenBox = document.createElement("div");
