@@ -131,6 +131,17 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  opacity: 1;
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #moon .scroll img:nth-child(1) {
@@ -161,6 +172,36 @@ canvas {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#home_title .title_box {
+  overflow: hidden;
+}
+
+#home_title .title_box:nth-child(1) {
+  animation: leftText 1s 7s forwards;
+}
+#home_title .title_box:nth-child(2) {
+  animation: rightText 1s 7s forwards;
+}
+
+@keyframes leftText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-15%);
+  }
+}
+
+@keyframes rightText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(15%);
+  }
 }
 
 #home_title .main_title {
@@ -168,15 +209,24 @@ canvas {
   font-weight: var(--font-bold);
   display: block;
   color: transparent;
-  padding: 25px 0;
   -webkit-text-stroke: 2px var(--bg-color);
+  padding: 25px 0;
+  transform: translateY(0);
+  /* opacity: 0; */
+  animation: clipText 4s 3s backwards;
 }
 
-#home_title .main_title:nth-child(1) {
-  text-align: left;
-}
-#home_title .main_title:nth-child(2) {
-  text-align: right;
+@keyframes clipText {
+  0% {
+    transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(0);
+    color: var(--bg-color);
+  }
+  100% {
+    color: transparent;
+  }
 }
 
 #ocean {
