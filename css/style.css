@@ -293,7 +293,7 @@ canvas {
 
 /* about */
 #about {
-  padding: 250px 0;
+  padding: 220px 0;
   width: 100vw;
   background-color: var(--bg-color);
   display: flex;
@@ -411,7 +411,7 @@ canvas {
 }
 
 .show {
-  animation: show 3s forwards;
+  animation: show 3s 0.5s forwards;
 }
 
 @keyframes show {
@@ -426,15 +426,19 @@ canvas {
 #project_wrap {
   position: relative;
   margin-bottom: 239px;
+  height: 750vh;
 }
 
 #project_box_wrap {
+  opacity: 0;
   width: 300%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  position: absolute;
-  top: 50%;
+  /* position: absolute; */
+  position: fixed;
+  top: 55%;
   transform: translateY(-50%);
+  opacity: 0;
 }
 
 #circle {
@@ -442,13 +446,15 @@ canvas {
   height: 1570px;
   border-radius: 50%;
   background-color: var(--green-color);
-  position: relative;
-  right: -31vw;
+  /* position: relative; */
+  position: fixed;
+  top: -28%;
+  right: -20vw;
   transform: scale(0);
 }
 
-#circle.sizeUp {
-  animation: expand 3s forwards;
+#circle.expand {
+  animation: expand 2s forwards;
 }
 
 @keyframes expand {
@@ -457,6 +463,19 @@ canvas {
   }
   100% {
     transform: scale(100%);
+  }
+}
+
+#circle.shrink {
+  animation: shrink 3s forwards;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(100%);
+  }
+  100% {
+    transform: scale(0);
   }
 }
 
@@ -485,7 +504,7 @@ canvas {
 }
 
 .project_title span:nth-child(2) {
-  margin-left: 63vw;
+  margin-left: 53vw;
 }
 
 .project_content {
@@ -496,7 +515,7 @@ canvas {
 }
 
 .project_content.onePage .img_wrap {
-  margin-left: 341px;
+  margin-left: 16vw;
 }
 
 .project_content > .btn_wrap {
@@ -627,6 +646,22 @@ canvas {
   width: 791px;
   height: 458px;
   perspective: 1500px;
+  opacity: 0;
+}
+
+.contact_box.show {
+  animation: appear 0.5s both;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .card {
