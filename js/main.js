@@ -21,7 +21,7 @@ function Particle(x, y, directionX, directionY, size, color) {
   };
 }
 
-const particleNum = 150;
+const particleNum = 200;
 let particlesArray = [];
 
 function particles() {
@@ -30,12 +30,29 @@ function particles() {
     let y = Math.random() * canvas.height;
     let directionX = Math.random() * 2 - 1;
     let directionY = Math.random() * 2 - 1;
-    let size = Math.random() * 5;
-    let color = `rgba(225, 225, 225, ${Math.round(Math.random() * 5)})`;
+    let size = Math.random() * 3 + 2;
+    let color = `rgba(255, 255, 255, ${Math.random() * 2 - 1})`;
 
     const p = new Particle(x, y, directionX, directionY, size, color);
     particlesArray.push(p);
   }
+}
+function animate() {
+  clearCanvas();
+  createParticles();
+  for (let i = 0; i < particlesArray.length; i++) {
+    p = particlesArray[i];
+    p.y += p.directionY * 0.3;
+    p.x += p.directionX * 0.3;
+
+    if (p.x >= canvas.width || p.x <= 0) {
+      p.directionX = -p.directionX;
+    }
+    if (p.y >= canvas.width || p.y <= 0) {
+      p.directionY = -p.directionY;
+    }
+  }
+  requestAnimationFrame(animate);
 }
 
 function createParticles() {
@@ -49,25 +66,13 @@ function clearCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function animate() {
-  requestAnimationFrame(animate);
-  clearCanvas();
-  createParticles();
-}
-
 function createBg() {
   particles();
   createParticles();
+  animate();
 }
 
 createBg();
-
-// fliped card
-const flipedCard = document.querySelector(".card");
-
-flipedCard.addEventListener("click", () => {
-  flipedCard.classList.toggle("fliped");
-});
 
 // resize
 const menu = document.querySelector("#header .menu");
@@ -94,6 +99,7 @@ window.addEventListener("resize", () => {
   hideMenu();
 });
 
+// hamburger menu
 const ham = document.querySelector(".ham");
 const hamMenu = document.querySelector(".mobile_menu .menu");
 
@@ -258,4 +264,11 @@ projectBtn[1].addEventListener("click", () => {
 });
 projectBtn[2].addEventListener("click", () => {
   changeImg(krispyImg[2]);
+});
+
+//fliped card
+const flipedCard = document.querySelector(".card");
+
+flipedCard.addEventListener("click", () => {
+  flipedCard.classList.toggle("fliped");
 });
