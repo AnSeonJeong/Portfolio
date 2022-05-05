@@ -1,3 +1,67 @@
+// background
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function Particle(x, y, directionX, directionY, size, color) {
+  this.x = x;
+  this.y = y;
+  this.directionX = directionX;
+  this.directionY = directionY;
+  this.size = size;
+  this.color = color;
+
+  this.draw = function () {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  };
+}
+
+const particleNum = 150;
+let particlesArray = [];
+
+function particles() {
+  for (let i = 0; i < particleNum; i++) {
+    let x = Math.random() * canvas.width;
+    let y = Math.random() * canvas.height;
+    let directionX = Math.random() * 2 - 1;
+    let directionY = Math.random() * 2 - 1;
+    let size = Math.random() * 5;
+    let color = `rgba(225, 225, 225, ${Math.round(Math.random() * 5)})`;
+
+    const p = new Particle(x, y, directionX, directionY, size, color);
+    particlesArray.push(p);
+  }
+}
+
+function createParticles() {
+  for (let i = 0; i < particlesArray.length; i++) {
+    p = particlesArray[i];
+    p.draw();
+  }
+}
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  clearCanvas();
+  createParticles();
+}
+
+function createBg() {
+  particles();
+  createParticles();
+}
+
+createBg();
+
 // fliped card
 const flipedCard = document.querySelector(".card");
 
@@ -20,6 +84,13 @@ function hideMenu() {
 hideMenu();
 
 window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  clearCanvas();
+  particlesArray = [];
+  createBg();
+
   hideMenu();
 });
 
@@ -141,7 +212,6 @@ window.addEventListener("scroll", () => {
   }
 
   // contact scroll event
-  console.log(currentScroll, contact.offsetTop);
   if (currentScroll > contact.offsetTop - 100) {
     contactBox.classList.add(SHOW);
   } else {

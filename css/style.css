@@ -467,7 +467,7 @@ canvas {
 }
 
 #circle.shrink {
-  animation: shrink 3s forwards;
+  animation: shrink 1s forwards;
 }
 
 @keyframes shrink {
