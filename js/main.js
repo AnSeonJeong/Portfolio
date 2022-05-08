@@ -37,6 +37,9 @@ function particles() {
     particlesArray.push(p);
   }
 }
+
+let animateId;
+
 function animate() {
   clearCanvas();
   createParticles();
@@ -52,7 +55,7 @@ function animate() {
       p.directionY = -p.directionY;
     }
   }
-  requestAnimationFrame(animate);
+  animateId = requestAnimationFrame(animate);
 }
 
 function createParticles() {
@@ -69,7 +72,7 @@ function clearCanvas() {
 function createBg() {
   particles();
   createParticles();
-  animate();
+  animateId = requestAnimationFrame(animate);
 }
 
 createBg();
@@ -95,6 +98,7 @@ window.addEventListener("resize", () => {
   clearCanvas();
   particlesArray = [];
   createBg();
+  cancelAnimationFrame(animateId);
 
   hideMenu();
 });
