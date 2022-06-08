@@ -15,6 +15,7 @@
   --footer-color: #a597b3;
   --green-color: #00704a;
   --red-color: #e1342f;
+  --blue-color: #3f65b7;
 }
 
 body,
@@ -431,14 +432,14 @@ canvas {
 #project_wrap {
   position: relative;
   margin-bottom: 239px;
-  height: 750vh;
+  height: 900vh;
 }
 
 #project_box_wrap {
   opacity: 0;
-  width: 300%;
+  width: 400%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   /* position: absolute; */
   position: fixed;
   top: 55%;

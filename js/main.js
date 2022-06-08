@@ -134,23 +134,6 @@ const projectWrap = document.querySelector("#project_wrap");
 const contactBox = document.querySelector(".contact_box");
 const contact = document.getElementById("contact");
 
-/*
-window.addEventListener("scroll", () => {
-  const currentScroll = document.documentElement.scrollTop;
-
-  topSection.forEach((section) => {
-    section.style.bottom = `${currentScroll * 2}px`;
-  });
-  waves.forEach((wave) => {
-    if (topSection[0].getBoundingClientRect().width > 1200) {
-      wave.style.bottom = `${currentScroll * 2 - 100}px`;
-    } else {
-      wave.style.bottom = `${currentScroll * 2 - 300}px`;
-    }
-  });
-});
-*/
-
 window.addEventListener("scroll", () => {
   // progress
   const currentScroll = document.body.scrollTop
@@ -213,6 +196,9 @@ window.addEventListener("scroll", () => {
     circle.style.transition = time;
   } else if (currentScroll < 8000) {
     circle.style.background = `var(--gradient-color2)`;
+    circle.style.transition = time;
+  } else if (currentScroll < 10000) {
+    circle.style.background = `var(--blue-color)`;
     circle.style.transition = time;
     circle.classList.add(EXPAND);
     circle.classList.remove(SHRINK);
