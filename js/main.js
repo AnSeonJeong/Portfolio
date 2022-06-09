@@ -137,7 +137,7 @@ const contact = document.getElementById("contact");
 window.addEventListener("scroll", () => {
   // progress
   const currentScroll = document.body.scrollTop
-    ? document.body.scrlollTop
+    ? document.body.scrollTop
     : document.documentElement.scrollTop;
 
   const calcHeight =
